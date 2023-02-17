@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -14,6 +16,12 @@ class _LoginPageState extends State<LoginPage> {
   //text controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+
+  Future signIn() async {
+    await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim());
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,20 +69,18 @@ class _LoginPageState extends State<LoginPage> {
                     child: TextField(
                       controller: emailController,
                       decoration: InputDecoration(
-                        //enabledBorder -> estado del componente al no tocarlo
-                        enabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide(color: Colors.white)),
-                        //estado del componente al estar focuseado
-                        focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(12),
-                            borderSide: BorderSide(color: Colors.deepPurple)),
-                        hintText: 'Email',
-                        //Color del background del TextField
-                        fillColor: Colors.grey[200],
-                        filled: true
-                      ),
-                      
+                          //enabledBorder -> The border to display when is enabled and is not showing an error.
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: BorderSide(color: Colors.white)),
+                          //focusBorder -> The border to display when has the focus and is not showing an error.
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: BorderSide(color: Colors.deepPurple)),
+                          hintText: 'Email',
+                          //Color del background del TextField
+                          fillColor: Colors.grey[200],
+                          filled: true),
                     ),
                   ),
                   SizedBox(
@@ -84,22 +90,21 @@ class _LoginPageState extends State<LoginPage> {
                   //password textfield
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                    child: Container(
-                      decoration: BoxDecoration(
-                          color: Colors.grey[200],
-                          border: Border.all(color: Colors.white),
-                          borderRadius: BorderRadius.circular(12)),
-                      child: Padding(
-                        padding: const EdgeInsets.only(left: 20.0),
-                        child: TextField(
-                          //obscureText -> hide the contents of the TextField
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            border: InputBorder.none,
-                            hintText: 'Password',
-                          ),
-                        ),
-                      ),
+                    child: TextField(
+                      controller: passwordController,
+                      decoration: InputDecoration(
+                          //enabledBorder -> The border to display when is enabled and is not showing an error.
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: BorderSide(color: Colors.white)),
+                          //focusBorder -> The border to display when has the focus and is not showing an error.
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: BorderSide(color: Colors.deepPurple)),
+                          hintText: 'Password',
+                          //Color del background del TextField
+                          fillColor: Colors.grey[200],
+                          filled: true),
                     ),
                   ),
                   SizedBox(
@@ -109,19 +114,25 @@ class _LoginPageState extends State<LoginPage> {
                   //sign in button
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
-                    child: Container(
-                      padding: EdgeInsets.all(20),
-                      decoration: BoxDecoration(
-                          color: Colors.purple,
-                          borderRadius: BorderRadius.circular(12)),
-                      child: Center(
-                          child: Text(
-                        'Sign in',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 18),
-                      )),
+                    //GestureDetector -> used to detect the user's actions on the application.
+                    //It is a non-visual widget that detects events on its child widgets.
+                    //onTap, onDoubleTap, onLongPress...
+                    child: GestureDetector(
+                      onTap: signIn,
+                      child: Container(
+                        padding: EdgeInsets.all(20),
+                        decoration: BoxDecoration(
+                            color: Colors.purple,
+                            borderRadius: BorderRadius.circular(12)),
+                        child: Center(
+                            child: Text(
+                          'Sign in',
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 18),
+                        )),
+                      ),
                     ),
                   ),
                   SizedBox(
