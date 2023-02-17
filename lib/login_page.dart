@@ -97,6 +97,7 @@ class _LoginPageState extends State<LoginPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: TextField(
+                      obscureText: true,
                       controller: passwordController,
                       decoration: InputDecoration(
                           //enabledBorder -> The border to display when is enabled and is not showing an error.
