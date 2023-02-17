@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "986504177191",
+    "project_id": "proyectofindecurso-cebe8",
+    "storage_bucket": "proyectofindecurso-cebe8.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:986504177191:android:efe8bb7609ad20b2c7d002",
+        "android_client_info": {
+          "package_name": "com.example.proyecto_fin_de_curso"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "986504177191-ikjmiqd4260cgtbb13ku4ahn6m0a84qa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBFJMIfdRPdDYIr8877tDIrS7599-C5LeM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "986504177191-ikjmiqd4260cgtbb13ku4ahn6m0a84qa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
