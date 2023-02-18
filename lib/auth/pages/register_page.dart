@@ -1,26 +1,28 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({Key? key}) : super(key: key);
+class RegisterPage extends StatefulWidget {
+  //VoidCallBack es una función que no devuelve nada y normalmente es usado para la comunicación entre widgets
+  //https://www.youtube.com/watch?v=fWlPwj1Pp7U&ab_channel=developer.school
+  
+  //Esta clase toma una variable requerida llamada showLoginPage que es una función de devolución de llamada que se llama cuando se presiona el texto Login Now. 
+  //Esto permite que el usuario cambie entre la página de registro y la página de inicio de sesión al presionarlo.
+  final VoidCallback showLoginPage;
+  const RegisterPage({Key? key, required this.showLoginPage}) : super(key: key);
 
   @override
-  State<LoginPage> createState() => _LoginPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _LoginPageState extends State<LoginPage> {
+class _RegisterPageState extends State<RegisterPage> {
   //text controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
-
-  Future signIn() async {
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text.trim(),
-        password: passwordController.text.trim());
-  }
+  final confirmPasswordController = TextEditingController();
 
   @override
   void dispose() {
@@ -29,9 +31,23 @@ class _LoginPageState extends State<LoginPage> {
     super.dispose();
   }
 
+  Future signUp() async {
+    if (passwordConfirmed()){
+    await FirebaseAuth.instance.createUserWithEmailAndPassword(
+        email: emailController.text.trim(),
+        password: passwordController.text.trim());
+    }
+  }
+  bool passwordConfirmed(){
+    if (passwordController.text.trim() == confirmPasswordController.text.trim()){
+      return true;
+    }else {
+      return false;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    //Scaffold es como un widget principal es decir la pantalla completa
     return Scaffold(
         backgroundColor: Colors.red.shade200,
         body: SafeArea(
@@ -52,7 +68,7 @@ class _LoginPageState extends State<LoginPage> {
 
                   //Hello Again!
                   Text(
-                    'Hello Again!',
+                    'Hello There',
                     style: GoogleFonts.bebasNeue(
                       fontSize: 52,
                     ),
@@ -62,7 +78,7 @@ class _LoginPageState extends State<LoginPage> {
                     height: 10,
                   ),
                   Text(
-                    'Welcome back, you\'ve been missed!',
+                    'Register below with your details!',
                     style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                   ),
                   SizedBox(
@@ -118,6 +134,32 @@ class _LoginPageState extends State<LoginPage> {
                     height: 10,
                   ),
 
+                  //Confirm password textfield
+                  //password textfield
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: TextField(
+                      obscureText: true,
+                      controller: confirmPasswordController,
+                      decoration: InputDecoration(
+                          //enabledBorder -> The border to display when is enabled and is not showing an error.
+                          enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: BorderSide(color: Colors.white)),
+                          //focusBorder -> The border to display when has the focus and is not showing an error.
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(12),
+                              borderSide: BorderSide(color: Colors.deepPurple)),
+                          hintText: 'Confirm Password',
+                          //Color del background del TextField
+                          fillColor: Colors.grey[200],
+                          filled: true),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+
                   //sign in button
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
@@ -125,7 +167,7 @@ class _LoginPageState extends State<LoginPage> {
                     //It is a non-visual widget that detects events on its child widgets.
                     //onTap, onDoubleTap, onLongPress...
                     child: GestureDetector(
-                      onTap: signIn,
+                      onTap: signUp,
                       child: Container(
                         padding: EdgeInsets.all(20),
                         decoration: BoxDecoration(
@@ -133,7 +175,7 @@ class _LoginPageState extends State<LoginPage> {
                             borderRadius: BorderRadius.circular(12)),
                         child: Center(
                             child: Text(
-                          'Sign in',
+                          'Sign Up',
                           style: TextStyle(
                               color: Colors.white,
                               fontWeight: FontWeight.bold,
@@ -151,14 +193,17 @@ class _LoginPageState extends State<LoginPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'Not a member?',
+                        'I am a member!',
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
-                      Text(
-                        ' Register now',
-                        style: TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold,
+                      GestureDetector(
+                        onTap: widget.showLoginPage,
+                        child: Text(
+                          ' Login now',
+                          style: TextStyle(
+                            color: Colors.blue,
+                            fontWeight: FontWeight.bold,
+                          ),
                         ),
                       )
                     ],

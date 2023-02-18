@@ -2,7 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:proyecto_fin_de_curso/main_page.dart';
+import 'package:proyecto_fin_de_curso/auth/main_page.dart';
 
 
 void main() async{
