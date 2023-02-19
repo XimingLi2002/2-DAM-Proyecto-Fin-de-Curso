@@ -58,12 +58,10 @@ class _RegisterPageState extends State<RegisterPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   //Imagen
-                  Icon(
-                    Icons.phone_android,
-                    size: 100,
-                  ),
+                  //Se puede ver el tamaño de la imagen si le pontemos lo almacenamos en un Container y le damos un color (es decir el background)
+                  Image(image: AssetImage('assets/logo.png'), fit: BoxFit.fitWidth, width: 240, filterQuality: FilterQuality.high,),
                   SizedBox(
-                    height: 75,
+                    height: 25,
                   ),
 
                   //Hello Again!

@@ -45,13 +45,10 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  //Imagen
-                  Icon(
-                    Icons.phone_android,
-                    size: 100,
-                  ),
+                  //Se puede ver el tamaño de la imagen si le pontemos lo almacenamos en un Container y le damos un color (es decir el background)
+                  Image(image: AssetImage('assets/logo.png'), fit: BoxFit.fitWidth, width: 240, filterQuality: FilterQuality.high,),
                   SizedBox(
-                    height: 75,
+                    height: 25,
                   ),
 
                   //Hello Again!
@@ -116,6 +113,33 @@ class _LoginPageState extends State<LoginPage> {
                           //Color del background del TextField
                           fillColor: Colors.grey[200],
                           filled: true),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+
+                  //Forget password?
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 25.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.end,
+                      children: [
+                        GestureDetector(
+                          onTap: () {
+                            //Navigator.push() es un método en Flutter que se usa para navegar entre vistas usando una transición animada. Este método toma un contexto y una ruta como parámetros y agrega la ruta a la pila de navegación, lo que le permite al usuario regresar a la vista anterior. Esta ruta puede ser una instancia de una clase de componente decorada con @PageRoute o una instancia de MaterialPageRoute, que proporciona una forma simple de navegar entre vistas con transiciones animadas basadas en la plataforma.
+                            // Navigator.push(context,
+                            //     MaterialPageRoute(builder: (context) {
+                            //   return ForgotPasswordPage();
+                            // }));
+                          },
+                          child: Text('Forgot password?',
+                              style: TextStyle(
+                                color: Colors.blue,
+                                fontWeight: FontWeight.bold,
+                              )),
+                        ),
+                      ],
                     ),
                   ),
                   SizedBox(
