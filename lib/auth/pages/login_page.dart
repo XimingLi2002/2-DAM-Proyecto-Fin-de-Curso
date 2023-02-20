@@ -3,6 +3,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:proyecto_fin_de_curso/auth/pages/forgot_password_page.dart';
 
 class LoginPage extends StatefulWidget {
   //VoidCallBack es una función que no devuelve nada y normalmente es usado para la comunicación entre widgets
@@ -21,9 +22,17 @@ class _LoginPageState extends State<LoginPage> {
   final passwordController = TextEditingController();
 
   Future signIn() async {
+    //loading
+    showDialog(context: context, builder: (context){
+      return Center(child: CircularProgressIndicator(),);
+    });
+
     await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailController.text.trim(),
         password: passwordController.text.trim());
+
+    //pop the loading circle
+    Navigator.of(context).pop();
   }
 
   @override
@@ -127,11 +136,16 @@ class _LoginPageState extends State<LoginPage> {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            //Navigator.push() es un método en Flutter que se usa para navegar entre vistas usando una transición animada. Este método toma un contexto y una ruta como parámetros y agrega la ruta a la pila de navegación, lo que le permite al usuario regresar a la vista anterior. Esta ruta puede ser una instancia de una clase de componente decorada con @PageRoute o una instancia de MaterialPageRoute, que proporciona una forma simple de navegar entre vistas con transiciones animadas basadas en la plataforma.
-                            // Navigator.push(context,
-                            //     MaterialPageRoute(builder: (context) {
-                            //   return ForgotPasswordPage();
-                            // }));
+                            //Navigator.push() es un método en Flutter que se usa para navegar entre vistas usando una transición animada. 
+                            //Este método toma un contexto y una ruta como parámetros y agrega la ruta a la pila de navegación, 
+                            //lo que le permite al usuario regresar a la vista anterior. 
+                            //Esta ruta puede ser una instancia de una clase de componente decorada con @PageRoute 
+                            //o una instancia de MaterialPageRoute, que proporciona una forma simple de navegar entre vistas con transiciones 
+                            //animadas basadas en la plataforma.
+                            Navigator.push(context,
+                                MaterialPageRoute(builder: (context) {
+                              return ForgotPasswordPage();
+                            }));
                           },
                           child: Text('Forgot password?',
                               style: TextStyle(
