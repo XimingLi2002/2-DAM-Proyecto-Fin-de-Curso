@@ -1,0 +1,10 @@
+^C:\USERS\IKILL\DOCUMENTS\2-DAM-PROYECTO-FIN-DE-CURSO\WINDOWS\FLUTTER\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -SC:/Users/ikill/Documents/2-DAM-Proyecto-Fin-de-Curso/windows -BC:/Users/ikill/Documents/2-DAM-Proyecto-Fin-de-Curso/build/windows --check-stamp-file C:/Users/ikill/Documents/2-DAM-Proyecto-Fin-de-Curso/build/windows/flutter/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

@@ -4,9 +4,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:proyecto_fin_de_curso/auth/pages/forgot_password_page.dart';
+import 'package:proyecto_fin_de_curso/util.dart';
 
 class LoginPage extends StatefulWidget {
-  //VoidCallBack es una función que no devuelve nada y normalmente es usado para la comunicación entre widgets
+  //VoidCallBack -> función que no devuelve nada y normalmente es usado para la comunicación entre widgets
   //https://www.youtube.com/watch?v=fWlPwj1Pp7U&ab_channel=developer.school
   final VoidCallback showRegisterPage;
 
@@ -23,15 +24,20 @@ class _LoginPageState extends State<LoginPage> {
 
   Future signIn() async {
     //loading
-    showDialog(context: context, builder: (context){
-      return Center(child: CircularProgressIndicator(),);
-    });
+    showDialog(
+        context: context,
+        builder: (context) {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        });
 
     await FirebaseAuth.instance.signInWithEmailAndPassword(
         email: emailController.text.trim(),
         password: passwordController.text.trim());
 
     //pop the loading circle
+    // ignore: use_build_context_synchronously
     Navigator.of(context).pop();
   }
 
@@ -46,7 +52,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     //Scaffold es como un widget principal es decir la pantalla completa
     return Scaffold(
-        backgroundColor: Colors.red.shade200,
+        backgroundColor: HexColor.fromHex('#9dcead'),
         body: SafeArea(
           child: Center(
             //Evita que el teclado se sobreponga sobre los componentes
@@ -55,7 +61,12 @@ class _LoginPageState extends State<LoginPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   //Se puede ver el tamaño de la imagen si le pontemos lo almacenamos en un Container y le damos un color (es decir el background)
-                  Image(image: AssetImage('assets/logo.png'), fit: BoxFit.fitWidth, width: 240, filterQuality: FilterQuality.high,),
+                  Image(
+                    image: AssetImage('assets/logo.png'),
+                    fit: BoxFit.fitWidth,
+                    width: 240,
+                    filterQuality: FilterQuality.high,
+                  ),
                   SizedBox(
                     height: 25,
                   ),
@@ -136,11 +147,11 @@ class _LoginPageState extends State<LoginPage> {
                       children: [
                         GestureDetector(
                           onTap: () {
-                            //Navigator.push() es un método en Flutter que se usa para navegar entre vistas usando una transición animada. 
-                            //Este método toma un contexto y una ruta como parámetros y agrega la ruta a la pila de navegación, 
-                            //lo que le permite al usuario regresar a la vista anterior. 
-                            //Esta ruta puede ser una instancia de una clase de componente decorada con @PageRoute 
-                            //o una instancia de MaterialPageRoute, que proporciona una forma simple de navegar entre vistas con transiciones 
+                            //Navigator.push() es un método en Flutter que se usa para navegar entre vistas usando una transición animada.
+                            //Este método toma un contexto y una ruta como parámetros y agrega la ruta a la pila de navegación,
+                            //lo que le permite al usuario regresar a la vista anterior.
+                            //Esta ruta puede ser una instancia de una clase de componente decorada con @PageRoute
+                            //o una instancia de MaterialPageRoute, que proporciona una forma simple de navegar entre vistas con transiciones
                             //animadas basadas en la plataforma.
                             Navigator.push(context,
                                 MaterialPageRoute(builder: (context) {
@@ -149,7 +160,7 @@ class _LoginPageState extends State<LoginPage> {
                           },
                           child: Text('Forgot password?',
                               style: TextStyle(
-                                color: Colors.blue,
+                                color: HexColor.fromHex('#b45698'),
                                 fontWeight: FontWeight.bold,
                               )),
                         ),
@@ -171,7 +182,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: Container(
                         padding: EdgeInsets.all(20),
                         decoration: BoxDecoration(
-                            color: Colors.purple,
+                            color: HexColor.fromHex('#1d8247'),
                             borderRadius: BorderRadius.circular(12)),
                         child: Center(
                             child: Text(
@@ -201,7 +212,7 @@ class _LoginPageState extends State<LoginPage> {
                         child: Text(
                           ' Register now',
                           style: TextStyle(
-                            color: Colors.blue,
+                            color: HexColor.fromHex('#b45698'),
                             fontWeight: FontWeight.bold,
                           ),
                         ),

@@ -11,12 +11,12 @@ class MainPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //Un StreamBuilder es un Widget que se usa para monitorear datos que cambian en tiempo real. 
-      //Está esperando un Stream que se llama 'FirebaseAuth.instance.authStateChanges()', 
-      //que devuelve un Stream de los cambios de estado de autenticación de Firebase. 
-      //El argumento 'builder' del StreamBuilder es una función que toma un contexto (context) y un snapshot (snapshot) como argumentos. 
-      //El snapshot contiene los datos que se reciben del Stream y el contexto le permite al StreamBuilder renderizar los Widgets correctos. 
-      //El StreamBuilder renderiza un Widget dentro del cuerpo de Scaffold que se especifica en el código.
+        //Un StreamBuilder es un Widget que se usa para monitorear datos que cambian en tiempo real.
+        //Está esperando un Stream que se llama 'FirebaseAuth.instance.authStateChanges()',
+        //que devuelve un Stream de los cambios de estado de autenticación de Firebase.
+        //El argumento 'builder' del StreamBuilder es una función que toma un contexto (context) y un snapshot (snapshot) como argumentos.
+        //El snapshot contiene los datos que se reciben del Stream y el contexto le permite al StreamBuilder renderizar los Widgets correctos.
+        //El StreamBuilder renderiza un Widget dentro del cuerpo de Scaffold que se especifica en el código.
         body: StreamBuilder<User?>(
       stream: FirebaseAuth.instance.authStateChanges(),
       //builder necesita context del widget y el snapshot es el parametro que tiene StreamBuilder que es User

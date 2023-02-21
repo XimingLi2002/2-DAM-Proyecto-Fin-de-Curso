@@ -4,12 +4,14 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:proyecto_fin_de_curso/reusable_widget.dart';
+import 'package:proyecto_fin_de_curso/util.dart';
 
 class RegisterPage extends StatefulWidget {
   //VoidCallBack es una función que no devuelve nada y normalmente es usado para la comunicación entre widgets
   //https://www.youtube.com/watch?v=fWlPwj1Pp7U&ab_channel=developer.school
-  
-  //Esta clase toma una variable requerida llamada showLoginPage que es una función de devolución de llamada que se llama cuando se presiona el texto Login Now. 
+
+  //Esta clase toma una variable requerida llamada showLoginPage que es una función de devolución de llamada que se llama cuando se presiona el texto Login Now.
   //Esto permite que el usuario cambie entre la página de registro y la página de inicio de sesión al presionarlo.
   final VoidCallback showLoginPage;
   const RegisterPage({Key? key, required this.showLoginPage}) : super(key: key);
@@ -32,16 +34,40 @@ class _RegisterPageState extends State<RegisterPage> {
   }
 
   Future signUp() async {
-    if (passwordConfirmed()){
-    await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: emailController.text.trim(),
-        password: passwordController.text.trim());
+    if (isValidPassword() &&
+        EmailValidator.isValidEmail(emailController.text.trim())) {
+      showDialog(
+          context: context,
+          builder: (context) {
+            return Center(
+              child: CircularProgressIndicator(),
+            );
+          });
+
+      try {
+        await FirebaseAuth.instance.createUserWithEmailAndPassword(
+            email: emailController.text.trim(),
+            password: passwordController.text.trim());
+      } on FirebaseAuthException catch (e) {
+        // ignore: use_build_context_synchronously
+        Navigator.of(context).pop();
+
+        test(context, e.message.toString());
+      }
+
+      //pop the loading circle
+      // ignore: use_build_context_synchronously
+      Navigator.of(context).pop();
     }
   }
-  bool passwordConfirmed(){
-    if (passwordController.text.trim() == confirmPasswordController.text.trim()){
+
+  //En Firebase la contraseña tiene que ser mínimo de 6 caracteres
+  bool isValidPassword() {
+    if (passwordController.text.trim() ==
+            confirmPasswordController.text.trim() &&
+        passwordController.text.trim().length >= 6) {
       return true;
-    }else {
+    } else {
       return false;
     }
   }
@@ -59,7 +85,12 @@ class _RegisterPageState extends State<RegisterPage> {
                 children: [
                   //Imagen
                   //Se puede ver el tamaño de la imagen si le pontemos lo almacenamos en un Container y le damos un color (es decir el background)
-                  Image(image: AssetImage('assets/logo.png'), fit: BoxFit.fitWidth, width: 240, filterQuality: FilterQuality.high,),
+                  Image(
+                    image: AssetImage('assets/logo.png'),
+                    fit: BoxFit.fitWidth,
+                    width: 240,
+                    filterQuality: FilterQuality.high,
+                  ),
                   SizedBox(
                     height: 25,
                   ),

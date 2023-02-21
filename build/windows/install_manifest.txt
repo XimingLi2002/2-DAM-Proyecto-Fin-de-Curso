@@ -1,0 +1,11 @@
+C:/Users/ikill/Documents/2-DAM-Proyecto-Fin-de-Curso/build/windows/runner/Debug/data/icudtl.dat
+C:/Users/ikill/Documents/2-DAM-Proyecto-Fin-de-Curso/build/windows/runner/Debug/flutter_windows.dll
+C:/Users/ikill/Documents/2-DAM-Proyecto-Fin-de-Curso/build/windows/runner/Debug/data/flutter_assets/AssetManifest.bin
+C:/Users/ikill/Documents/2-DAM-Proyecto-Fin-de-Curso/build/windows/runner/Debug/data/flutter_assets/AssetManifest.json
+C:/Users/ikill/Documents/2-DAM-Proyecto-Fin-de-Curso/build/windows/runner/Debug/data/flutter_assets/assets/logo.png
+C:/Users/ikill/Documents/2-DAM-Proyecto-Fin-de-Curso/build/windows/runner/Debug/data/flutter_assets/FontManifest.json
+C:/Users/ikill/Documents/2-DAM-Proyecto-Fin-de-Curso/build/windows/runner/Debug/data/flutter_assets/fonts/MaterialIcons-Regular.otf
+C:/Users/ikill/Documents/2-DAM-Proyecto-Fin-de-Curso/build/windows/runner/Debug/data/flutter_assets/kernel_blob.bin
+C:/Users/ikill/Documents/2-DAM-Proyecto-Fin-de-Curso/build/windows/runner/Debug/data/flutter_assets/NOTICES.Z
+C:/Users/ikill/Documents/2-DAM-Proyecto-Fin-de-Curso/build/windows/runner/Debug/data/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf
+C:/Users/ikill/Documents/2-DAM-Proyecto-Fin-de-Curso/build/windows/runner/Debug/data/flutter_assets/shaders/ink_sparkle.frag
