@@ -2,8 +2,9 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:proyecto_fin_de_curso/util.dart';
+
+import '../../reusable_widget.dart';
 
 class ForgotPasswordPage extends StatefulWidget {
   const ForgotPasswordPage({super.key});
@@ -43,30 +44,8 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
       //The email address is badly formatted.
       //There is no user record corresponding to this identifier. The user may have been deleted.
 
-      showDialog(
-          //barrierDismissible -> Por defecto se puede cerrar el cuadro de error pulsando cualquier parte fuera de esta en la pantalla
-          barrierDismissible: false,
-          context: context,
-          builder: (context) {
-            return AlertDialog(
-              title: Text('Error!',
-                  style: GoogleFonts.robotoSerif(
-                      textStyle: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.red[800]))),
-              content: Text(e.message.toString()),
-              actions: [
-                //MaterialButton -> tipo de botón indispensable para el desarrollo Android
-                MaterialButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                  },
-                  child: Text('Ok'),
-                ),
-              ],
-            );
-          });
+      showAlertMessage(context, e.message.toString());
+      
     }
   }
 

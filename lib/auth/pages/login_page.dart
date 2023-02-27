@@ -1,10 +1,12 @@
-// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
+// ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables, use_build_context_synchronously
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:proyecto_fin_de_curso/auth/pages/forgot_password_page.dart';
 import 'package:proyecto_fin_de_curso/util.dart';
+
+import '../../reusable_widget.dart';
 
 class LoginPage extends StatefulWidget {
   //VoidCallBack -> función que no devuelve nada y normalmente es usado para la comunicación entre widgets
@@ -24,21 +26,24 @@ class _LoginPageState extends State<LoginPage> {
 
   Future signIn() async {
     //loading
-    showDialog(
-        context: context,
-        builder: (context) {
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        });
+    showCircularProgressIndicator(context);
 
-    await FirebaseAuth.instance.signInWithEmailAndPassword(
-        email: emailController.text.trim(),
-        password: passwordController.text.trim());
+    try {
+      //inicia sesión con la autentificación de Firebase
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+          email: emailController.text.trim(),
+          password: passwordController.text.trim());
+
+      //una vez iniciado sesión con éxito cerrará el CircularProgressIndicator()
+      Navigator.of(context).pop();
+    } on FirebaseAuthException catch (e) {
+      //si falla también deberá dejar de mostrar el CircularProgressIndicator()
+      Navigator.of(context).pop();
+      //muestra una alerta con el error
+      showAlertMessage(context, e.message.toString());
+    }
 
     //pop the loading circle
-    // ignore: use_build_context_synchronously
-    Navigator.of(context).pop();
   }
 
   @override
@@ -60,7 +65,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  //Se puede ver el tamaño de la imagen si le pontemos lo almacenamos en un Container y le damos un color (es decir el background)
+                  //Se puede ver el tamaño de la imagen si se almacena en un Container y le damos un color (es decir el background)
                   Image(
                     image: AssetImage('assets/logo.png'),
                     fit: BoxFit.fitWidth,

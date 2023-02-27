@@ -52,7 +52,7 @@ class _RegisterPageState extends State<RegisterPage> {
         // ignore: use_build_context_synchronously
         Navigator.of(context).pop();
 
-        test(context, e.message.toString());
+        showAlertMessage(context, e.message.toString());
       }
 
       //pop the loading circle

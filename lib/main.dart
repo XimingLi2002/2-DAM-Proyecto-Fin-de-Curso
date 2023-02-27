@@ -3,9 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:proyecto_fin_de_curso/auth/main_page.dart';
+import 'package:proyecto_fin_de_curso/util.dart';
 
-
-void main() async{
+void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
@@ -17,30 +17,15 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: ThemeData(
+        primaryColor: HexColor.fromHex("#9dcead"),
+      ),
       debugShowCheckedModeBanner: false,
       home: MainPage(),
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 class TestImage extends StatefulWidget {
   const TestImage({super.key});
@@ -57,8 +42,7 @@ class _TestImageState extends State<TestImage> {
         alignment: Alignment.center,
         decoration: BoxDecoration(
             image: DecorationImage(
-                image: AssetImage(
-                    'assets/main_background.jpeg'),
+                image: AssetImage('assets/main_background.jpeg'),
                 fit: BoxFit.contain)),
         child: TextField(decoration: InputDecoration(hintText: 'Email')),
       ),

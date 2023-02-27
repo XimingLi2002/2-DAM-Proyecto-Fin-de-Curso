@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:proyecto_fin_de_curso/auth/pages/login_page.dart';
+import 'package:proyecto_fin_de_curso/quiz/quiz_page.dart';
 
 import 'auth_page.dart';
 import 'pages/home_page.dart';
@@ -23,7 +23,7 @@ class MainPage extends StatelessWidget {
       //que es una clase que trae FireBase y ejecuta en función de si existe o no
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return HomePage();
+          return QuizPage();
         } else {
           return AuthPage();
         }

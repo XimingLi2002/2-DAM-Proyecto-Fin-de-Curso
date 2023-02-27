@@ -14,7 +14,18 @@ TextField reusableTextField(String text, IconData icon, bool isPasswordType,
   );
 }
 
-Future test(BuildContext context, String text) {
+Future showCircularProgressIndicator(BuildContext context){
+  return showDialog(
+    barrierDismissible: false,
+        context: context,
+        builder: (context) {
+          return Center(
+            child: CircularProgressIndicator(),
+          );
+        });
+}
+
+Future showAlertMessage(BuildContext context, String text) {
   return showDialog(
       //barrierDismissible -> Por defecto se puede cerrar el cuadro de error pulsando cualquier parte fuera de esta en la pantalla
       barrierDismissible: false,
@@ -34,7 +45,7 @@ Future test(BuildContext context, String text) {
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: Text('Ok'),
+              child: const Text('Ok'),
             ),
           ],
         );
