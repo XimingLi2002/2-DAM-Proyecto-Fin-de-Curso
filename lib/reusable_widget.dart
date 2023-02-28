@@ -1,28 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-TextField reusableTextField(String text, IconData icon, bool isPasswordType,
-    TextEditingController controller) {
-  return TextField(
-    controller: controller,
-    obscureText: isPasswordType,
-    enableSuggestions: !isPasswordType,
-    autocorrect: !isPasswordType,
-    cursorColor: Colors.white,
-    style: TextStyle(color: Colors.white.withOpacity(0.9)),
-    decoration: InputDecoration(prefixIcon: Icon(icon, color: Colors.white70)),
-  );
-}
-
-Future showCircularProgressIndicator(BuildContext context){
+Future showCircularProgressIndicator(BuildContext context) {
   return showDialog(
-    barrierDismissible: false,
-        context: context,
-        builder: (context) {
-          return Center(
-            child: CircularProgressIndicator(),
-          );
-        });
+      barrierDismissible: false,
+      context: context,
+      builder: (context) {
+        return Center(
+          child: CircularProgressIndicator(),
+        );
+      });
 }
 
 Future showAlertMessage(BuildContext context, String text) {
@@ -33,7 +20,7 @@ Future showAlertMessage(BuildContext context, String text) {
       builder: (context) {
         return AlertDialog(
           title: Text('Error!',
-              style: GoogleFonts.robotoSerif(
+              style: GoogleFonts.roboto(
                   textStyle: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w700,

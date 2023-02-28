@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:animate_icons/animate_icons.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -26,6 +27,11 @@ class _RegisterPageState extends State<RegisterPage> {
   final passwordController = TextEditingController();
   final confirmPasswordController = TextEditingController();
 
+  var hidePassword = true;
+  var hideConfirmPassword = true;
+
+  AnimateIconController controller = AnimateIconController();
+  
   @override
   void dispose() {
     emailController.dispose();
@@ -75,7 +81,7 @@ class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.red.shade200,
+        backgroundColor: HexColor.fromHex('#9dcead'),
         body: SafeArea(
           child: Center(
             //Evita que el teclado se sobreponga sobre los componentes
@@ -120,18 +126,24 @@ class _RegisterPageState extends State<RegisterPage> {
                     child: TextField(
                       controller: emailController,
                       decoration: InputDecoration(
-                          //enabledBorder -> The border to display when is enabled and is not showing an error.
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide: BorderSide(color: Colors.white)),
-                          //focusBorder -> The border to display when has the focus and is not showing an error.
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide: BorderSide(color: Colors.deepPurple)),
-                          hintText: 'Email',
-                          //Color del background del TextField
-                          fillColor: Colors.grey[200],
-                          filled: true),
+                        prefixIcon: Icon(Icons.lock,
+                            color: HexColor.fromHex("#51a13d")),
+                        //enabledBorder -> The border to display when is enabled and is not showing an error.
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            borderSide:
+                                BorderSide(color: HexColor.fromHex("#ce9dbe"))),
+                        //focusBorder -> The border to display when has the focus and is not showing an error.
+                        focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            borderSide:
+                                BorderSide(color: HexColor.fromHex("#be76a6"))),
+                        hintText: 'Email',
+                        //Color del background del TextField
+                        fillColor: Colors.white.withOpacity(0.3),
+                        filled: true,
+                      ),
+                      keyboardType: TextInputType.emailAddress,
                     ),
                   ),
                   SizedBox(
@@ -142,21 +154,53 @@ class _RegisterPageState extends State<RegisterPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: TextField(
-                      obscureText: true,
+                      obscureText: hidePassword,
+                      enableSuggestions: false,
+                      autocorrect: false,
                       controller: passwordController,
                       decoration: InputDecoration(
-                          //enabledBorder -> The border to display when is enabled and is not showing an error.
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide: BorderSide(color: Colors.white)),
-                          //focusBorder -> The border to display when has the focus and is not showing an error.
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide: BorderSide(color: Colors.deepPurple)),
-                          hintText: 'Password',
-                          //Color del background del TextField
-                          fillColor: Colors.grey[200],
-                          filled: true),
+                        prefixIcon: Icon(Icons.lock,
+                            color: HexColor.fromHex("#51a13d")),
+                        suffixIcon: AnimateIcons(
+                          startIcon: Icons.visibility,
+                          endIcon: Icons.visibility_off,
+                          controller: controller,
+                          size: 25.0,
+                          onStartIconPress: () {
+                            //setState -> notifica al framework que algo se ha cambiado para que ésta lo actualize
+                            setState(() {
+                              hidePassword = false;
+                            });
+
+                            return true;
+                          },
+                          onEndIconPress: () {
+                            setState(() {
+                              hidePassword = true;
+                            });
+                            return true;
+                          },
+                          duration: Duration(milliseconds: 500),
+                          startIconColor: HexColor.fromHex("#51a13d").withOpacity(.25),
+                          endIconColor: HexColor.fromHex("#51a13d").withOpacity(.75),
+                          clockwise: false,
+                        ),
+                        //enabledBorder -> The border to display when is enabled and is not showing an error.
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            borderSide:
+                                BorderSide(color: HexColor.fromHex("#ce9dbe"))),
+                        //focusBorder -> The border to display when has the focus and is not showing an error.
+                        focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            borderSide:
+                                BorderSide(color: HexColor.fromHex("#be76a6"))),
+                        hintText: 'Password',
+                        //Color del background del TextField
+                        fillColor: Colors.white.withOpacity(0.3),
+                        filled: true,
+                      ),
+                      keyboardType: TextInputType.visiblePassword,
                     ),
                   ),
                   SizedBox(
@@ -168,21 +212,53 @@ class _RegisterPageState extends State<RegisterPage> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 25.0),
                     child: TextField(
-                      obscureText: true,
+                      obscureText: hideConfirmPassword,
+                      enableSuggestions: false,
+                      autocorrect: false,
                       controller: confirmPasswordController,
                       decoration: InputDecoration(
-                          //enabledBorder -> The border to display when is enabled and is not showing an error.
-                          enabledBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide: BorderSide(color: Colors.white)),
-                          //focusBorder -> The border to display when has the focus and is not showing an error.
-                          focusedBorder: OutlineInputBorder(
-                              borderRadius: BorderRadius.circular(12),
-                              borderSide: BorderSide(color: Colors.deepPurple)),
-                          hintText: 'Confirm Password',
-                          //Color del background del TextField
-                          fillColor: Colors.grey[200],
-                          filled: true),
+                        prefixIcon: Icon(Icons.lock,
+                            color: HexColor.fromHex("#51a13d")),
+                        suffixIcon: AnimateIcons(
+                          startIcon: Icons.visibility,
+                          endIcon: Icons.visibility_off,
+                          controller: controller,
+                          size: 25.0,
+                          onStartIconPress: () {
+                            //setState -> notifica al framework que algo se ha cambiado para que ésta lo actualize
+                            setState(() {
+                              hideConfirmPassword = false;
+                            });
+
+                            return true;
+                          },
+                          onEndIconPress: () {
+                            setState(() {
+                              hideConfirmPassword = true;
+                            });
+                            return true;
+                          },
+                          duration: Duration(milliseconds: 500),
+                          startIconColor: HexColor.fromHex("#51a13d").withOpacity(.25),
+                          endIconColor: HexColor.fromHex("#51a13d").withOpacity(.75),
+                          clockwise: false,
+                        ),
+                        //enabledBorder -> The border to display when is enabled and is not showing an error.
+                        enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            borderSide:
+                                BorderSide(color: HexColor.fromHex("#ce9dbe"))),
+                        //focusBorder -> The border to display when has the focus and is not showing an error.
+                        focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            borderSide:
+                                BorderSide(color: HexColor.fromHex("#be76a6"))),
+                        hintText: 'Confirm Password',
+                        //Color del background del TextField
+                        fillColor: Colors.white.withOpacity(0.3),
+                        filled: true,
+                      ),
+                      keyboardType: TextInputType.visiblePassword,
                     ),
                   ),
                   SizedBox(
@@ -200,8 +276,8 @@ class _RegisterPageState extends State<RegisterPage> {
                       child: Container(
                         padding: EdgeInsets.all(20),
                         decoration: BoxDecoration(
-                            color: Colors.purple,
-                            borderRadius: BorderRadius.circular(12)),
+                            color: HexColor.fromHex('#1d8247'),
+                            borderRadius: BorderRadius.circular(30)),
                         child: Center(
                             child: Text(
                           'Sign Up',
@@ -230,7 +306,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         child: Text(
                           ' Login now',
                           style: TextStyle(
-                            color: Colors.blue,
+                            color: HexColor.fromHex('#b45698'),
                             fontWeight: FontWeight.bold,
                           ),
                         ),

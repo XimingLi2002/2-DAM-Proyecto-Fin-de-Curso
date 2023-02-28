@@ -1,5 +1,6 @@
 // ignore_for_file: sort_child_properties_last, prefer_const_constructors
 
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:proyecto_fin_de_curso/util.dart';
 
@@ -14,11 +15,18 @@ class _QuizPageState extends State<QuizPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Theme.of(context).primaryColor,
+      backgroundColor: HexColor.fromHex('#9dcead'),
       appBar: AppBar(
         title: Text('Quiz'),
         backgroundColor: HexColor.fromHex("#9dcead"),
         elevation: 0,
+        actions: [
+          IconButton(
+              onPressed: () {
+                FirebaseAuth.instance.signOut();
+              },
+              icon: Icon(Icons.exit_to_app))
+        ],
       ),
       body: Column(children: [
         Container(

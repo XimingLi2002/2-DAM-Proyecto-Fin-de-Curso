@@ -3,7 +3,6 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:proyecto_fin_de_curso/auth/main_page.dart';
-import 'package:proyecto_fin_de_curso/util.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,9 +17,6 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-        primaryColor: HexColor.fromHex("#9dcead"),
-      ),
       debugShowCheckedModeBanner: false,
       home: MainPage(),
     );

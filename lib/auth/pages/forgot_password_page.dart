@@ -25,9 +25,10 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
 //Future -> permite crear operaciones de larga duración sin bloquear el hilo principal y el uso de operaciones asincrónicas
   Future passwordReset() async {
     try {
-      //await -> hasta que no finalize la tarea asignada no continúa
+      //await -> espera hasta que termine la tarea
       await FirebaseAuth.instance
           .sendPasswordResetEmail(email: emailController.text.trim());
+
       // ignore: use_build_context_synchronously
       showDialog(
           context: context,
@@ -45,15 +46,15 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
       //There is no user record corresponding to this identifier. The user may have been deleted.
 
       showAlertMessage(context, e.message.toString());
-      
     }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: HexColor.fromHex('#9dcead'),
       appBar: AppBar(
-        backgroundColor: HexColor.fromHex('#9dcead'),
+        backgroundColor: HexColor.fromHex('#36b569'),
         elevation: 0,
       ),
       body: SingleChildScrollView(
@@ -90,15 +91,15 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               child: TextField(
                 controller: emailController,
                 decoration: InputDecoration(
-                    //enabledBorder -> The border to display when is enabled and is not showing an error.
+                    //enabledBorder -> el borde que se muestra por defecto
                     enabledBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                         borderSide: BorderSide(color: Colors.white)),
-                    //focusBorder -> The border to display when has the focus and is not showing an error.
+                    //focusBorder -> El borde que se muestra al estar focuseado
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12),
                         borderSide:
-                            BorderSide(color: HexColor.fromHex('#8d2d7d'))),
+                            BorderSide(color: HexColor.fromHex("#be76a6"))),
                     hintText: 'Email',
                     //Color del background del TextField
                     fillColor: Colors.grey[200],

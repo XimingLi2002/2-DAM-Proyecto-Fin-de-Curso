@@ -1,4 +1,4 @@
-#Mon Feb 27 17:35:11 CET 2023
+#Tue Feb 28 10:25:15 CET 2023
 base.0=C\:\\Users\\xkiwu\\2-DAM-Proyecto-Fin-de-Curso\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\classes.dex
 renamed.0=classes.dex
 path.0=classes.dex

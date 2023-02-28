@@ -8,6 +8,12 @@
       "languageVersion": "2.16"
     },
     {
+      "name": "animate_icons",
+      "rootUri": "file:///C:/Users/xkiwu/Documents/flutter/.pub-cache/hosted/pub.dev/animate_icons-2.0.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.12"
+    },
+    {
       "name": "async",
       "rootUri": "file:///C:/Users/xkiwu/Documents/flutter/.pub-cache/hosted/pub.dev/async-2.10.0",
       "packageUri": "lib/",
@@ -314,7 +320,7 @@
       "languageVersion": "3.0"
     }
   ],
-  "generated": "2023-02-27T12:18:58.375539Z",
+  "generated": "2023-02-28T10:02:45.932181Z",
   "generator": "pub",
   "generatorVersion": "3.0.0-276.0.dev"
 }
