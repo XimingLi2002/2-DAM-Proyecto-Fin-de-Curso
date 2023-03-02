@@ -65,7 +65,7 @@ class _ForgotPasswordPageState extends State<ForgotPasswordPage> {
               height: 50,
             ),
             Image(
-              image: AssetImage('assets/logo.png'),
+              image: AssetImage('assets/img/logo.png'),
               fit: BoxFit.fitWidth,
               width: 175,
               filterQuality: FilterQuality.high,

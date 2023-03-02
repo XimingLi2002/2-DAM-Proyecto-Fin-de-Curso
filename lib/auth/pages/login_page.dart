@@ -71,7 +71,7 @@ class _LoginPageState extends State<LoginPage> {
                 children: [
                   //Se puede ver el tamaño de la imagen si se almacena en un Container y le damos un color (es decir el background)
                   Image(
-                    image: AssetImage('assets/logo.png'),
+                    image: AssetImage('assets/img/logo.png'),
                     fit: BoxFit.fitWidth,
                     width: 240,
                     filterQuality: FilterQuality.high,
@@ -105,7 +105,7 @@ class _LoginPageState extends State<LoginPage> {
                     child: TextField(
                       controller: emailController,
                       decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.lock,
+                        prefixIcon: Icon(Icons.mail,
                             color: HexColor.fromHex("#51a13d")),
                         //enabledBorder -> The border to display when is enabled and is not showing an error.
                         enabledBorder: OutlineInputBorder(

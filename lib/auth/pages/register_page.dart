@@ -92,7 +92,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   //Imagen
                   //Se puede ver el tamaño de la imagen si le pontemos lo almacenamos en un Container y le damos un color (es decir el background)
                   Image(
-                    image: AssetImage('assets/logo.png'),
+                    image: AssetImage('assets/img/logo.png'),
                     fit: BoxFit.fitWidth,
                     width: 240,
                     filterQuality: FilterQuality.high,
@@ -159,7 +159,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       autocorrect: false,
                       controller: passwordController,
                       decoration: InputDecoration(
-                        prefixIcon: Icon(Icons.lock,
+                        prefixIcon: Icon(Icons.email,
                             color: HexColor.fromHex("#51a13d")),
                         suffixIcon: AnimateIcons(
                           startIcon: Icons.visibility,
