@@ -11,6 +11,7 @@ void main() async {
   runApp(const MyApp());
 }
 
+
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
 
@@ -23,6 +24,27 @@ class MyApp extends StatelessWidget {
   }
 }
 
+/*
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  runApp(const MyApp());
+}
+
+class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: MainPage(),
+    );
+  }
+}
+*/
+// = = = = = = = = = = = = = = = = = = = = = =
 class TestImage extends StatefulWidget {
   const TestImage({super.key});
 

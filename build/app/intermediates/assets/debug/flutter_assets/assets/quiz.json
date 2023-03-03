@@ -1,0 +1,23 @@
+[
+    {
+        "Pokemon": "Bulbasaur",
+        "Pepe": "",
+        "PokemonImgRoute": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png"
+    },
+    {
+        "Pokemon": "Ivysaur",
+        "PokemonImgRoute": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/002.png"
+    },
+    {
+        "Pokemon": "Venusaur",
+        "PokemonImgRoute": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/003.png"
+    },
+    {
+        "Pokemon": "Charmander",
+        "PokemonImgRoute": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/004.png"
+    },
+    {
+        "Pokemon": "Charmeleon",
+        "PokemonImgRoute": "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/005.png"
+    }
+]

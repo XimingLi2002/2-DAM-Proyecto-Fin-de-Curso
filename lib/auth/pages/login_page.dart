@@ -37,8 +37,10 @@ class _LoginPageState extends State<LoginPage> {
     try {
       //inicia sesión con la autentificación de Firebase
       await FirebaseAuth.instance.signInWithEmailAndPassword(
-          email: emailController.text.trim(),
-          password: passwordController.text.trim());
+          // email: emailController.text.trim(),
+          // password: passwordController.text.trim());
+          email: "test@gmail.com",
+          password: "123123");
 
       //una vez iniciado sesión con éxito cerrará el CircularProgressIndicator()
       Navigator.of(context).pop();
@@ -160,8 +162,10 @@ class _LoginPageState extends State<LoginPage> {
                             return true;
                           },
                           duration: Duration(milliseconds: 500),
-                          startIconColor: HexColor.fromHex("#51a13d").withOpacity(.25),
-                          endIconColor: HexColor.fromHex("#51a13d").withOpacity(.75),
+                          startIconColor:
+                              HexColor.fromHex("#51a13d").withOpacity(.25),
+                          endIconColor:
+                              HexColor.fromHex("#51a13d").withOpacity(.75),
                           clockwise: false,
                         ),
                         //enabledBorder -> The border to display when is enabled and is not showing an error.
