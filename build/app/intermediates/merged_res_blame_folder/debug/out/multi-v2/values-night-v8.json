@@ -4,7 +4,7 @@
             "outputFile": "com.example.proyecto_fin_de_curso.app-mergeDebugResources-14:/values-night-v8/values-night-v8.xml",
             "map": [
                 {
-                    "source": "C:\\Users\\xkiwu\\2-DAM-Proyecto-Fin-de-Curso\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "C:\\Users\\xkiwu\\Documents\\2-DAM-Proyecto-Fin-de-Curso\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",
